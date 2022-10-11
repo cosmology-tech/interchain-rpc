@@ -1,6 +1,6 @@
 {
   "name": "interchain-rpc",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "interchain-rpc",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/cosmology-tech/interchain-rpc#readme",
@@ -60,6 +60,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@osmonauts/telescope": "^0.52.0",
     "@protobufs/cosmos": "^0.0.11",
+    "@protobufs/juno": "^0.0.14",
     "@types/jest": "^28.1.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "28.1.3",

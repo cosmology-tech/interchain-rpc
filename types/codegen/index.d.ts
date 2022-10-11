@@ -7,4 +7,5 @@ export * from "./cosmos_proto/bundle";
 export * from "./cosmos/bundle";
 export * from "./gogoproto/bundle";
 export * from "./google/bundle";
+export * from "./juno/bundle";
 export * from "./tendermint/bundle";
