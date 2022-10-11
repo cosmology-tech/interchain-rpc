@@ -1,4 +1,5 @@
-/// <reference types="long" />
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../helpers";
 export declare enum FieldDescriptorProto_Type {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.
@@ -1587,3 +1588,138 @@ export interface GeneratedCodeInfo_AnnotationSDKType {
      */
     end: number;
 }
+export declare const FileDescriptorSet: {
+    encode(message: FileDescriptorSet, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorSet;
+    fromPartial(object: DeepPartial<FileDescriptorSet>): FileDescriptorSet;
+};
+export declare const FileDescriptorProto: {
+    encode(message: FileDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): FileDescriptorProto;
+    fromPartial(object: DeepPartial<FileDescriptorProto>): FileDescriptorProto;
+};
+export declare const DescriptorProto: {
+    encode(message: DescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto;
+    fromPartial(object: DeepPartial<DescriptorProto>): DescriptorProto;
+};
+export declare const DescriptorProto_ExtensionRange: {
+    encode(message: DescriptorProto_ExtensionRange, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
+    fromPartial(object: DeepPartial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
+};
+export declare const DescriptorProto_ReservedRange: {
+    encode(message: DescriptorProto_ReservedRange, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
+    fromPartial(object: DeepPartial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
+};
+export declare const ExtensionRangeOptions: {
+    encode(message: ExtensionRangeOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionRangeOptions;
+    fromPartial(object: DeepPartial<ExtensionRangeOptions>): ExtensionRangeOptions;
+};
+export declare const FieldDescriptorProto: {
+    encode(message: FieldDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): FieldDescriptorProto;
+    fromPartial(object: DeepPartial<FieldDescriptorProto>): FieldDescriptorProto;
+};
+export declare const OneofDescriptorProto: {
+    encode(message: OneofDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): OneofDescriptorProto;
+    fromPartial(object: DeepPartial<OneofDescriptorProto>): OneofDescriptorProto;
+};
+export declare const EnumDescriptorProto: {
+    encode(message: EnumDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto;
+    fromPartial(object: DeepPartial<EnumDescriptorProto>): EnumDescriptorProto;
+};
+export declare const EnumDescriptorProto_EnumReservedRange: {
+    encode(message: EnumDescriptorProto_EnumReservedRange, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
+    fromPartial(object: DeepPartial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
+};
+export declare const EnumValueDescriptorProto: {
+    encode(message: EnumValueDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueDescriptorProto;
+    fromPartial(object: DeepPartial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
+};
+export declare const ServiceDescriptorProto: {
+    encode(message: ServiceDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ServiceDescriptorProto;
+    fromPartial(object: DeepPartial<ServiceDescriptorProto>): ServiceDescriptorProto;
+};
+export declare const MethodDescriptorProto: {
+    encode(message: MethodDescriptorProto, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MethodDescriptorProto;
+    fromPartial(object: DeepPartial<MethodDescriptorProto>): MethodDescriptorProto;
+};
+export declare const FileOptions: {
+    encode(message: FileOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): FileOptions;
+    fromPartial(object: DeepPartial<FileOptions>): FileOptions;
+};
+export declare const MessageOptions: {
+    encode(message: MessageOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MessageOptions;
+    fromPartial(object: DeepPartial<MessageOptions>): MessageOptions;
+};
+export declare const FieldOptions: {
+    encode(message: FieldOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): FieldOptions;
+    fromPartial(object: DeepPartial<FieldOptions>): FieldOptions;
+};
+export declare const OneofOptions: {
+    encode(message: OneofOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): OneofOptions;
+    fromPartial(object: DeepPartial<OneofOptions>): OneofOptions;
+};
+export declare const EnumOptions: {
+    encode(message: EnumOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EnumOptions;
+    fromPartial(object: DeepPartial<EnumOptions>): EnumOptions;
+};
+export declare const EnumValueOptions: {
+    encode(message: EnumValueOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EnumValueOptions;
+    fromPartial(object: DeepPartial<EnumValueOptions>): EnumValueOptions;
+};
+export declare const ServiceOptions: {
+    encode(message: ServiceOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ServiceOptions;
+    fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions;
+};
+export declare const MethodOptions: {
+    encode(message: MethodOptions, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MethodOptions;
+    fromPartial(object: DeepPartial<MethodOptions>): MethodOptions;
+};
+export declare const UninterpretedOption: {
+    encode(message: UninterpretedOption, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption;
+    fromPartial(object: DeepPartial<UninterpretedOption>): UninterpretedOption;
+};
+export declare const UninterpretedOption_NamePart: {
+    encode(message: UninterpretedOption_NamePart, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): UninterpretedOption_NamePart;
+    fromPartial(object: DeepPartial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
+};
+export declare const SourceCodeInfo: {
+    encode(message: SourceCodeInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo;
+    fromPartial(object: DeepPartial<SourceCodeInfo>): SourceCodeInfo;
+};
+export declare const SourceCodeInfo_Location: {
+    encode(message: SourceCodeInfo_Location, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SourceCodeInfo_Location;
+    fromPartial(object: DeepPartial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
+};
+export declare const GeneratedCodeInfo: {
+    encode(message: GeneratedCodeInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo;
+    fromPartial(object: DeepPartial<GeneratedCodeInfo>): GeneratedCodeInfo;
+};
+export declare const GeneratedCodeInfo_Annotation: {
+    encode(message: GeneratedCodeInfo_Annotation, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
+    fromPartial(object: DeepPartial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation;
+};

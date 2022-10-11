@@ -1,9 +1,10 @@
-/// <reference types="long" />
 import { Tx, TxSDKType } from "./tx";
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { TxResponse, TxResponseSDKType, GasInfo, GasInfoSDKType, Result, ResultSDKType } from "../../base/abci/v1beta1/abci";
 import { BlockID, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../tendermint/types/block";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../../helpers";
 /** OrderBy defines the sorting order */
 export declare enum OrderBy {
     /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
@@ -286,3 +287,53 @@ export interface GetBlockWithTxsResponseSDKType {
     /** pagination defines a pagination for the response. */
     pagination?: PageResponseSDKType;
 }
+export declare const GetTxsEventRequest: {
+    encode(message: GetTxsEventRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventRequest;
+    fromPartial(object: DeepPartial<GetTxsEventRequest>): GetTxsEventRequest;
+};
+export declare const GetTxsEventResponse: {
+    encode(message: GetTxsEventResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse;
+    fromPartial(object: DeepPartial<GetTxsEventResponse>): GetTxsEventResponse;
+};
+export declare const BroadcastTxRequest: {
+    encode(message: BroadcastTxRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxRequest;
+    fromPartial(object: DeepPartial<BroadcastTxRequest>): BroadcastTxRequest;
+};
+export declare const BroadcastTxResponse: {
+    encode(message: BroadcastTxResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse;
+    fromPartial(object: DeepPartial<BroadcastTxResponse>): BroadcastTxResponse;
+};
+export declare const SimulateRequest: {
+    encode(message: SimulateRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SimulateRequest;
+    fromPartial(object: DeepPartial<SimulateRequest>): SimulateRequest;
+};
+export declare const SimulateResponse: {
+    encode(message: SimulateResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse;
+    fromPartial(object: DeepPartial<SimulateResponse>): SimulateResponse;
+};
+export declare const GetTxRequest: {
+    encode(message: GetTxRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxRequest;
+    fromPartial(object: DeepPartial<GetTxRequest>): GetTxRequest;
+};
+export declare const GetTxResponse: {
+    encode(message: GetTxResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse;
+    fromPartial(object: DeepPartial<GetTxResponse>): GetTxResponse;
+};
+export declare const GetBlockWithTxsRequest: {
+    encode(message: GetBlockWithTxsRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsRequest;
+    fromPartial(object: DeepPartial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest;
+};
+export declare const GetBlockWithTxsResponse: {
+    encode(message: GetBlockWithTxsResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponse;
+    fromPartial(object: DeepPartial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
+};

@@ -1,5 +1,6 @@
-/// <reference types="long" />
 import { Deposit, DepositSDKType, Vote, VoteSDKType, Proposal, ProposalSDKType, DepositParams, DepositParamsSDKType, VotingParams, VotingParamsSDKType, TallyParams, TallyParamsSDKType } from "./gov";
+import * as _m0 from "protobufjs/minimal";
+import { Long, DeepPartial } from "../../../helpers";
 /** GenesisState defines the gov module's genesis state. */
 export interface GenesisState {
     /** starting_proposal_id is the ID of the starting proposal. */
@@ -34,3 +35,8 @@ export interface GenesisStateSDKType {
     /** params defines all the paramaters of related to tally. */
     tally_params: TallyParamsSDKType;
 }
+export declare const GenesisState: {
+    encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+};

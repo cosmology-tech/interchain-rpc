@@ -1,8 +1,9 @@
-/// <reference types="long" />
 import { Header, HeaderSDKType } from "../types/types";
 import { ProofOps, ProofOpsSDKType } from "../crypto/proof";
 import { EvidenceParams, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsSDKType, VersionParams, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeySDKType } from "../crypto/keys";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../helpers";
 export declare enum CheckTxType {
     NEW = 0,
     RECHECK = 1,
@@ -679,3 +680,223 @@ export interface SnapshotSDKType {
     /** Arbitrary application metadata */
     metadata: Uint8Array;
 }
+export declare const Request: {
+    encode(message: Request, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Request;
+    fromPartial(object: DeepPartial<Request>): Request;
+};
+export declare const RequestEcho: {
+    encode(message: RequestEcho, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestEcho;
+    fromPartial(object: DeepPartial<RequestEcho>): RequestEcho;
+};
+export declare const RequestFlush: {
+    encode(_: RequestFlush, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestFlush;
+    fromPartial(_: DeepPartial<RequestFlush>): RequestFlush;
+};
+export declare const RequestInfo: {
+    encode(message: RequestInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestInfo;
+    fromPartial(object: DeepPartial<RequestInfo>): RequestInfo;
+};
+export declare const RequestSetOption: {
+    encode(message: RequestSetOption, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestSetOption;
+    fromPartial(object: DeepPartial<RequestSetOption>): RequestSetOption;
+};
+export declare const RequestInitChain: {
+    encode(message: RequestInitChain, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestInitChain;
+    fromPartial(object: DeepPartial<RequestInitChain>): RequestInitChain;
+};
+export declare const RequestQuery: {
+    encode(message: RequestQuery, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestQuery;
+    fromPartial(object: DeepPartial<RequestQuery>): RequestQuery;
+};
+export declare const RequestBeginBlock: {
+    encode(message: RequestBeginBlock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestBeginBlock;
+    fromPartial(object: DeepPartial<RequestBeginBlock>): RequestBeginBlock;
+};
+export declare const RequestCheckTx: {
+    encode(message: RequestCheckTx, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestCheckTx;
+    fromPartial(object: DeepPartial<RequestCheckTx>): RequestCheckTx;
+};
+export declare const RequestDeliverTx: {
+    encode(message: RequestDeliverTx, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestDeliverTx;
+    fromPartial(object: DeepPartial<RequestDeliverTx>): RequestDeliverTx;
+};
+export declare const RequestEndBlock: {
+    encode(message: RequestEndBlock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestEndBlock;
+    fromPartial(object: DeepPartial<RequestEndBlock>): RequestEndBlock;
+};
+export declare const RequestCommit: {
+    encode(_: RequestCommit, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestCommit;
+    fromPartial(_: DeepPartial<RequestCommit>): RequestCommit;
+};
+export declare const RequestListSnapshots: {
+    encode(_: RequestListSnapshots, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestListSnapshots;
+    fromPartial(_: DeepPartial<RequestListSnapshots>): RequestListSnapshots;
+};
+export declare const RequestOfferSnapshot: {
+    encode(message: RequestOfferSnapshot, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestOfferSnapshot;
+    fromPartial(object: DeepPartial<RequestOfferSnapshot>): RequestOfferSnapshot;
+};
+export declare const RequestLoadSnapshotChunk: {
+    encode(message: RequestLoadSnapshotChunk, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestLoadSnapshotChunk;
+    fromPartial(object: DeepPartial<RequestLoadSnapshotChunk>): RequestLoadSnapshotChunk;
+};
+export declare const RequestApplySnapshotChunk: {
+    encode(message: RequestApplySnapshotChunk, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestApplySnapshotChunk;
+    fromPartial(object: DeepPartial<RequestApplySnapshotChunk>): RequestApplySnapshotChunk;
+};
+export declare const Response: {
+    encode(message: Response, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Response;
+    fromPartial(object: DeepPartial<Response>): Response;
+};
+export declare const ResponseException: {
+    encode(message: ResponseException, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseException;
+    fromPartial(object: DeepPartial<ResponseException>): ResponseException;
+};
+export declare const ResponseEcho: {
+    encode(message: ResponseEcho, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEcho;
+    fromPartial(object: DeepPartial<ResponseEcho>): ResponseEcho;
+};
+export declare const ResponseFlush: {
+    encode(_: ResponseFlush, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseFlush;
+    fromPartial(_: DeepPartial<ResponseFlush>): ResponseFlush;
+};
+export declare const ResponseInfo: {
+    encode(message: ResponseInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInfo;
+    fromPartial(object: DeepPartial<ResponseInfo>): ResponseInfo;
+};
+export declare const ResponseSetOption: {
+    encode(message: ResponseSetOption, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseSetOption;
+    fromPartial(object: DeepPartial<ResponseSetOption>): ResponseSetOption;
+};
+export declare const ResponseInitChain: {
+    encode(message: ResponseInitChain, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseInitChain;
+    fromPartial(object: DeepPartial<ResponseInitChain>): ResponseInitChain;
+};
+export declare const ResponseQuery: {
+    encode(message: ResponseQuery, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseQuery;
+    fromPartial(object: DeepPartial<ResponseQuery>): ResponseQuery;
+};
+export declare const ResponseBeginBlock: {
+    encode(message: ResponseBeginBlock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseBeginBlock;
+    fromPartial(object: DeepPartial<ResponseBeginBlock>): ResponseBeginBlock;
+};
+export declare const ResponseCheckTx: {
+    encode(message: ResponseCheckTx, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCheckTx;
+    fromPartial(object: DeepPartial<ResponseCheckTx>): ResponseCheckTx;
+};
+export declare const ResponseDeliverTx: {
+    encode(message: ResponseDeliverTx, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseDeliverTx;
+    fromPartial(object: DeepPartial<ResponseDeliverTx>): ResponseDeliverTx;
+};
+export declare const ResponseEndBlock: {
+    encode(message: ResponseEndBlock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseEndBlock;
+    fromPartial(object: DeepPartial<ResponseEndBlock>): ResponseEndBlock;
+};
+export declare const ResponseCommit: {
+    encode(message: ResponseCommit, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseCommit;
+    fromPartial(object: DeepPartial<ResponseCommit>): ResponseCommit;
+};
+export declare const ResponseListSnapshots: {
+    encode(message: ResponseListSnapshots, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseListSnapshots;
+    fromPartial(object: DeepPartial<ResponseListSnapshots>): ResponseListSnapshots;
+};
+export declare const ResponseOfferSnapshot: {
+    encode(message: ResponseOfferSnapshot, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseOfferSnapshot;
+    fromPartial(object: DeepPartial<ResponseOfferSnapshot>): ResponseOfferSnapshot;
+};
+export declare const ResponseLoadSnapshotChunk: {
+    encode(message: ResponseLoadSnapshotChunk, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseLoadSnapshotChunk;
+    fromPartial(object: DeepPartial<ResponseLoadSnapshotChunk>): ResponseLoadSnapshotChunk;
+};
+export declare const ResponseApplySnapshotChunk: {
+    encode(message: ResponseApplySnapshotChunk, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseApplySnapshotChunk;
+    fromPartial(object: DeepPartial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk;
+};
+export declare const ConsensusParams: {
+    encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
+    fromPartial(object: DeepPartial<ConsensusParams>): ConsensusParams;
+};
+export declare const BlockParams: {
+    encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
+    fromPartial(object: DeepPartial<BlockParams>): BlockParams;
+};
+export declare const LastCommitInfo: {
+    encode(message: LastCommitInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LastCommitInfo;
+    fromPartial(object: DeepPartial<LastCommitInfo>): LastCommitInfo;
+};
+export declare const Event: {
+    encode(message: Event, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Event;
+    fromPartial(object: DeepPartial<Event>): Event;
+};
+export declare const EventAttribute: {
+    encode(message: EventAttribute, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EventAttribute;
+    fromPartial(object: DeepPartial<EventAttribute>): EventAttribute;
+};
+export declare const TxResult: {
+    encode(message: TxResult, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TxResult;
+    fromPartial(object: DeepPartial<TxResult>): TxResult;
+};
+export declare const Validator: {
+    encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
+    fromPartial(object: DeepPartial<Validator>): Validator;
+};
+export declare const ValidatorUpdate: {
+    encode(message: ValidatorUpdate, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorUpdate;
+    fromPartial(object: DeepPartial<ValidatorUpdate>): ValidatorUpdate;
+};
+export declare const VoteInfo: {
+    encode(message: VoteInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): VoteInfo;
+    fromPartial(object: DeepPartial<VoteInfo>): VoteInfo;
+};
+export declare const Evidence: {
+    encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
+    fromPartial(object: DeepPartial<Evidence>): Evidence;
+};
+export declare const Snapshot: {
+    encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Snapshot;
+    fromPartial(object: DeepPartial<Snapshot>): Snapshot;
+};

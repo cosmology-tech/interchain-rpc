@@ -1,3 +1,5 @@
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../../helpers";
 /** AppDescriptor describes a cosmos-sdk based application */
 export interface AppDescriptor {
     /**
@@ -380,3 +382,133 @@ export interface QueryMethodDescriptorSDKType {
      */
     full_query_path: string;
 }
+export declare const AppDescriptor: {
+    encode(message: AppDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AppDescriptor;
+    fromPartial(object: DeepPartial<AppDescriptor>): AppDescriptor;
+};
+export declare const TxDescriptor: {
+    encode(message: TxDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TxDescriptor;
+    fromPartial(object: DeepPartial<TxDescriptor>): TxDescriptor;
+};
+export declare const AuthnDescriptor: {
+    encode(message: AuthnDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): AuthnDescriptor;
+    fromPartial(object: DeepPartial<AuthnDescriptor>): AuthnDescriptor;
+};
+export declare const SigningModeDescriptor: {
+    encode(message: SigningModeDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SigningModeDescriptor;
+    fromPartial(object: DeepPartial<SigningModeDescriptor>): SigningModeDescriptor;
+};
+export declare const ChainDescriptor: {
+    encode(message: ChainDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ChainDescriptor;
+    fromPartial(object: DeepPartial<ChainDescriptor>): ChainDescriptor;
+};
+export declare const CodecDescriptor: {
+    encode(message: CodecDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): CodecDescriptor;
+    fromPartial(object: DeepPartial<CodecDescriptor>): CodecDescriptor;
+};
+export declare const InterfaceDescriptor: {
+    encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
+    fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor;
+};
+export declare const InterfaceImplementerDescriptor: {
+    encode(message: InterfaceImplementerDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceImplementerDescriptor;
+    fromPartial(object: DeepPartial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor;
+};
+export declare const InterfaceAcceptingMessageDescriptor: {
+    encode(message: InterfaceAcceptingMessageDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceAcceptingMessageDescriptor;
+    fromPartial(object: DeepPartial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor;
+};
+export declare const ConfigurationDescriptor: {
+    encode(message: ConfigurationDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ConfigurationDescriptor;
+    fromPartial(object: DeepPartial<ConfigurationDescriptor>): ConfigurationDescriptor;
+};
+export declare const MsgDescriptor: {
+    encode(message: MsgDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDescriptor;
+    fromPartial(object: DeepPartial<MsgDescriptor>): MsgDescriptor;
+};
+export declare const GetAuthnDescriptorRequest: {
+    encode(_: GetAuthnDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorRequest;
+    fromPartial(_: DeepPartial<GetAuthnDescriptorRequest>): GetAuthnDescriptorRequest;
+};
+export declare const GetAuthnDescriptorResponse: {
+    encode(message: GetAuthnDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponse;
+    fromPartial(object: DeepPartial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
+};
+export declare const GetChainDescriptorRequest: {
+    encode(_: GetChainDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorRequest;
+    fromPartial(_: DeepPartial<GetChainDescriptorRequest>): GetChainDescriptorRequest;
+};
+export declare const GetChainDescriptorResponse: {
+    encode(message: GetChainDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponse;
+    fromPartial(object: DeepPartial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
+};
+export declare const GetCodecDescriptorRequest: {
+    encode(_: GetCodecDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorRequest;
+    fromPartial(_: DeepPartial<GetCodecDescriptorRequest>): GetCodecDescriptorRequest;
+};
+export declare const GetCodecDescriptorResponse: {
+    encode(message: GetCodecDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponse;
+    fromPartial(object: DeepPartial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
+};
+export declare const GetConfigurationDescriptorRequest: {
+    encode(_: GetConfigurationDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorRequest;
+    fromPartial(_: DeepPartial<GetConfigurationDescriptorRequest>): GetConfigurationDescriptorRequest;
+};
+export declare const GetConfigurationDescriptorResponse: {
+    encode(message: GetConfigurationDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponse;
+    fromPartial(object: DeepPartial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
+};
+export declare const GetQueryServicesDescriptorRequest: {
+    encode(_: GetQueryServicesDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorRequest;
+    fromPartial(_: DeepPartial<GetQueryServicesDescriptorRequest>): GetQueryServicesDescriptorRequest;
+};
+export declare const GetQueryServicesDescriptorResponse: {
+    encode(message: GetQueryServicesDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse;
+    fromPartial(object: DeepPartial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
+};
+export declare const GetTxDescriptorRequest: {
+    encode(_: GetTxDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorRequest;
+    fromPartial(_: DeepPartial<GetTxDescriptorRequest>): GetTxDescriptorRequest;
+};
+export declare const GetTxDescriptorResponse: {
+    encode(message: GetTxDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponse;
+    fromPartial(object: DeepPartial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
+};
+export declare const QueryServicesDescriptor: {
+    encode(message: QueryServicesDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryServicesDescriptor;
+    fromPartial(object: DeepPartial<QueryServicesDescriptor>): QueryServicesDescriptor;
+};
+export declare const QueryServiceDescriptor: {
+    encode(message: QueryServiceDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryServiceDescriptor;
+    fromPartial(object: DeepPartial<QueryServiceDescriptor>): QueryServiceDescriptor;
+};
+export declare const QueryMethodDescriptor: {
+    encode(message: QueryMethodDescriptor, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryMethodDescriptor;
+    fromPartial(object: DeepPartial<QueryMethodDescriptor>): QueryMethodDescriptor;
+};

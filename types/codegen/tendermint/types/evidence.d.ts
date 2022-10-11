@@ -1,6 +1,7 @@
-/// <reference types="long" />
 import { Vote, VoteSDKType, LightBlock, LightBlockSDKType } from "./types";
 import { Validator, ValidatorSDKType } from "./validator";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../helpers";
 export interface Evidence {
     duplicateVoteEvidence?: DuplicateVoteEvidence;
     lightClientAttackEvidence?: LightClientAttackEvidence;
@@ -47,3 +48,23 @@ export interface EvidenceList {
 export interface EvidenceListSDKType {
     evidence: EvidenceSDKType[];
 }
+export declare const Evidence: {
+    encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
+    fromPartial(object: DeepPartial<Evidence>): Evidence;
+};
+export declare const DuplicateVoteEvidence: {
+    encode(message: DuplicateVoteEvidence, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): DuplicateVoteEvidence;
+    fromPartial(object: DeepPartial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
+};
+export declare const LightClientAttackEvidence: {
+    encode(message: LightClientAttackEvidence, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LightClientAttackEvidence;
+    fromPartial(object: DeepPartial<LightClientAttackEvidence>): LightClientAttackEvidence;
+};
+export declare const EvidenceList: {
+    encode(message: EvidenceList, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceList;
+    fromPartial(object: DeepPartial<EvidenceList>): EvidenceList;
+};

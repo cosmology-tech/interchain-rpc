@@ -50,7 +50,7 @@ telescope({
       parser: {
         keepCase: false
       },
-      enabled: false,
+      enabled: true,
       includePackageVar: false,
       typingsFormat: {
         useExact: false,

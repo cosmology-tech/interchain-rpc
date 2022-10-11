@@ -1,6 +1,9 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
+import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long, toTimestamp, fromTimestamp } from "../../../helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 
 export enum VoteOption {
@@ -410,3 +413,573 @@ export interface TallyParamsSDKType {
 
   veto_threshold: string;
 }
+
+function createBaseWeightedVoteOption(): WeightedVoteOption {
+  return {
+    option: 0,
+    weight: ""
+  };
+}
+
+export const WeightedVoteOption = {
+  encode(message: WeightedVoteOption, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.option !== 0) {
+      writer.uint32(8).int32(message.option);
+    }
+
+    if (message.weight !== "") {
+      writer.uint32(18).string(message.weight);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseWeightedVoteOption();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.option = (reader.int32() as any);
+          break;
+
+        case 2:
+          message.weight = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<WeightedVoteOption>): WeightedVoteOption {
+    const message = createBaseWeightedVoteOption();
+    message.option = object.option ?? 0;
+    message.weight = object.weight ?? "";
+    return message;
+  }
+
+};
+
+function createBaseDeposit(): Deposit {
+  return {
+    proposalId: Long.UZERO,
+    depositor: "",
+    amount: []
+  };
+}
+
+export const Deposit = {
+  encode(message: Deposit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.proposalId.isZero()) {
+      writer.uint32(8).uint64(message.proposalId);
+    }
+
+    if (message.depositor !== "") {
+      writer.uint32(18).string(message.depositor);
+    }
+
+    for (const v of message.amount) {
+      Coin.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Deposit {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeposit();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.proposalId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.depositor = reader.string();
+          break;
+
+        case 3:
+          message.amount.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Deposit>): Deposit {
+    const message = createBaseDeposit();
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.depositor = object.depositor ?? "";
+    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseProposal(): Proposal {
+  return {
+    id: Long.UZERO,
+    messages: [],
+    status: 0,
+    finalTallyResult: undefined,
+    submitTime: undefined,
+    depositEndTime: undefined,
+    totalDeposit: [],
+    votingStartTime: undefined,
+    votingEndTime: undefined,
+    metadata: ""
+  };
+}
+
+export const Proposal = {
+  encode(message: Proposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.id.isZero()) {
+      writer.uint32(8).uint64(message.id);
+    }
+
+    for (const v of message.messages) {
+      Any.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.status !== 0) {
+      writer.uint32(24).int32(message.status);
+    }
+
+    if (message.finalTallyResult !== undefined) {
+      TallyResult.encode(message.finalTallyResult, writer.uint32(34).fork()).ldelim();
+    }
+
+    if (message.submitTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.submitTime), writer.uint32(42).fork()).ldelim();
+    }
+
+    if (message.depositEndTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.depositEndTime), writer.uint32(50).fork()).ldelim();
+    }
+
+    for (const v of message.totalDeposit) {
+      Coin.encode(v!, writer.uint32(58).fork()).ldelim();
+    }
+
+    if (message.votingStartTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.votingStartTime), writer.uint32(66).fork()).ldelim();
+    }
+
+    if (message.votingEndTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.votingEndTime), writer.uint32(74).fork()).ldelim();
+    }
+
+    if (message.metadata !== "") {
+      writer.uint32(82).string(message.metadata);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Proposal {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseProposal();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.id = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.messages.push(Any.decode(reader, reader.uint32()));
+          break;
+
+        case 3:
+          message.status = (reader.int32() as any);
+          break;
+
+        case 4:
+          message.finalTallyResult = TallyResult.decode(reader, reader.uint32());
+          break;
+
+        case 5:
+          message.submitTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 6:
+          message.depositEndTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 7:
+          message.totalDeposit.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 8:
+          message.votingStartTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 9:
+          message.votingEndTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 10:
+          message.metadata = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Proposal>): Proposal {
+    const message = createBaseProposal();
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+    message.status = object.status ?? 0;
+    message.finalTallyResult = object.finalTallyResult !== undefined && object.finalTallyResult !== null ? TallyResult.fromPartial(object.finalTallyResult) : undefined;
+    message.submitTime = object.submitTime ?? undefined;
+    message.depositEndTime = object.depositEndTime ?? undefined;
+    message.totalDeposit = object.totalDeposit?.map(e => Coin.fromPartial(e)) || [];
+    message.votingStartTime = object.votingStartTime ?? undefined;
+    message.votingEndTime = object.votingEndTime ?? undefined;
+    message.metadata = object.metadata ?? "";
+    return message;
+  }
+
+};
+
+function createBaseTallyResult(): TallyResult {
+  return {
+    yesCount: "",
+    abstainCount: "",
+    noCount: "",
+    noWithVetoCount: ""
+  };
+}
+
+export const TallyResult = {
+  encode(message: TallyResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.yesCount !== "") {
+      writer.uint32(10).string(message.yesCount);
+    }
+
+    if (message.abstainCount !== "") {
+      writer.uint32(18).string(message.abstainCount);
+    }
+
+    if (message.noCount !== "") {
+      writer.uint32(26).string(message.noCount);
+    }
+
+    if (message.noWithVetoCount !== "") {
+      writer.uint32(34).string(message.noWithVetoCount);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTallyResult();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.yesCount = reader.string();
+          break;
+
+        case 2:
+          message.abstainCount = reader.string();
+          break;
+
+        case 3:
+          message.noCount = reader.string();
+          break;
+
+        case 4:
+          message.noWithVetoCount = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<TallyResult>): TallyResult {
+    const message = createBaseTallyResult();
+    message.yesCount = object.yesCount ?? "";
+    message.abstainCount = object.abstainCount ?? "";
+    message.noCount = object.noCount ?? "";
+    message.noWithVetoCount = object.noWithVetoCount ?? "";
+    return message;
+  }
+
+};
+
+function createBaseVote(): Vote {
+  return {
+    proposalId: Long.UZERO,
+    voter: "",
+    options: [],
+    metadata: ""
+  };
+}
+
+export const Vote = {
+  encode(message: Vote, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.proposalId.isZero()) {
+      writer.uint32(8).uint64(message.proposalId);
+    }
+
+    if (message.voter !== "") {
+      writer.uint32(18).string(message.voter);
+    }
+
+    for (const v of message.options) {
+      WeightedVoteOption.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+
+    if (message.metadata !== "") {
+      writer.uint32(42).string(message.metadata);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Vote {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVote();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.proposalId = (reader.uint64() as Long);
+          break;
+
+        case 2:
+          message.voter = reader.string();
+          break;
+
+        case 4:
+          message.options.push(WeightedVoteOption.decode(reader, reader.uint32()));
+          break;
+
+        case 5:
+          message.metadata = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Vote>): Vote {
+    const message = createBaseVote();
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.voter = object.voter ?? "";
+    message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
+    message.metadata = object.metadata ?? "";
+    return message;
+  }
+
+};
+
+function createBaseDepositParams(): DepositParams {
+  return {
+    minDeposit: [],
+    maxDepositPeriod: undefined
+  };
+}
+
+export const DepositParams = {
+  encode(message: DepositParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.minDeposit) {
+      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.maxDepositPeriod !== undefined) {
+      Duration.encode(message.maxDepositPeriod, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDepositParams();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.minDeposit.push(Coin.decode(reader, reader.uint32()));
+          break;
+
+        case 2:
+          message.maxDepositPeriod = Duration.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<DepositParams>): DepositParams {
+    const message = createBaseDepositParams();
+    message.minDeposit = object.minDeposit?.map(e => Coin.fromPartial(e)) || [];
+    message.maxDepositPeriod = object.maxDepositPeriod !== undefined && object.maxDepositPeriod !== null ? Duration.fromPartial(object.maxDepositPeriod) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseVotingParams(): VotingParams {
+  return {
+    votingPeriod: undefined
+  };
+}
+
+export const VotingParams = {
+  encode(message: VotingParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.votingPeriod !== undefined) {
+      Duration.encode(message.votingPeriod, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVotingParams();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.votingPeriod = Duration.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<VotingParams>): VotingParams {
+    const message = createBaseVotingParams();
+    message.votingPeriod = object.votingPeriod !== undefined && object.votingPeriod !== null ? Duration.fromPartial(object.votingPeriod) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseTallyParams(): TallyParams {
+  return {
+    quorum: "",
+    threshold: "",
+    vetoThreshold: ""
+  };
+}
+
+export const TallyParams = {
+  encode(message: TallyParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.quorum !== "") {
+      writer.uint32(10).string(message.quorum);
+    }
+
+    if (message.threshold !== "") {
+      writer.uint32(18).string(message.threshold);
+    }
+
+    if (message.vetoThreshold !== "") {
+      writer.uint32(26).string(message.vetoThreshold);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTallyParams();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.quorum = reader.string();
+          break;
+
+        case 2:
+          message.threshold = reader.string();
+          break;
+
+        case 3:
+          message.vetoThreshold = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<TallyParams>): TallyParams {
+    const message = createBaseTallyParams();
+    message.quorum = object.quorum ?? "";
+    message.threshold = object.threshold ?? "";
+    message.vetoThreshold = object.vetoThreshold ?? "";
+    return message;
+  }
+
+};

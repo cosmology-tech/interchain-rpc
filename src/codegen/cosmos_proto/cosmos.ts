@@ -1,3 +1,5 @@
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../helpers";
 export enum ScalarType {
   SCALAR_TYPE_UNSPECIFIED = 0,
   SCALAR_TYPE_STRING = 1,
@@ -154,3 +156,135 @@ export interface ScalarDescriptorSDKType {
 
   field_type: ScalarTypeSDKType[];
 }
+
+function createBaseInterfaceDescriptor(): InterfaceDescriptor {
+  return {
+    name: "",
+    description: ""
+  };
+}
+
+export const InterfaceDescriptor = {
+  encode(message: InterfaceDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseInterfaceDescriptor();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.name = reader.string();
+          break;
+
+        case 2:
+          message.description = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor {
+    const message = createBaseInterfaceDescriptor();
+    message.name = object.name ?? "";
+    message.description = object.description ?? "";
+    return message;
+  }
+
+};
+
+function createBaseScalarDescriptor(): ScalarDescriptor {
+  return {
+    name: "",
+    description: "",
+    fieldType: []
+  };
+}
+
+export const ScalarDescriptor = {
+  encode(message: ScalarDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+
+    writer.uint32(26).fork();
+
+    for (const v of message.fieldType) {
+      writer.int32(v);
+    }
+
+    writer.ldelim();
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ScalarDescriptor {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseScalarDescriptor();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.name = reader.string();
+          break;
+
+        case 2:
+          message.description = reader.string();
+          break;
+
+        case 3:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+
+            while (reader.pos < end2) {
+              message.fieldType.push((reader.int32() as any));
+            }
+          } else {
+            message.fieldType.push((reader.int32() as any));
+          }
+
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<ScalarDescriptor>): ScalarDescriptor {
+    const message = createBaseScalarDescriptor();
+    message.name = object.name ?? "";
+    message.description = object.description ?? "";
+    message.fieldType = object.fieldType?.map(e => e) || [];
+    return message;
+  }
+
+};

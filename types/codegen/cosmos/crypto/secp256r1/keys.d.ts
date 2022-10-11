@@ -1,3 +1,5 @@
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /** PubKey defines a secp256r1 ECDSA public key. */
 export interface PubKey {
     /**
@@ -24,3 +26,13 @@ export interface PrivKeySDKType {
     /** secret number serialized using big-endian encoding */
     secret: Uint8Array;
 }
+export declare const PubKey: {
+    encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
+    fromPartial(object: DeepPartial<PubKey>): PubKey;
+};
+export declare const PrivKey: {
+    encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
+    fromPartial(object: DeepPartial<PrivKey>): PrivKey;
+};

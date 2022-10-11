@@ -1,7 +1,10 @@
 import { Header, HeaderSDKType } from "../../../tendermint/types/types";
+import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, toTimestamp, fromTimestamp, Long } from "../../../helpers";
 /** BondStatus is the status of a validator. */
 
 export enum BondStatus {
@@ -623,3 +626,1333 @@ export interface PoolSDKType {
   not_bonded_tokens: string;
   bonded_tokens: string;
 }
+
+function createBaseHistoricalInfo(): HistoricalInfo {
+  return {
+    header: undefined,
+    valset: []
+  };
+}
+
+export const HistoricalInfo = {
+  encode(message: HistoricalInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.header !== undefined) {
+      Header.encode(message.header, writer.uint32(10).fork()).ldelim();
+    }
+
+    for (const v of message.valset) {
+      Validator.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): HistoricalInfo {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseHistoricalInfo();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.header = Header.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.valset.push(Validator.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<HistoricalInfo>): HistoricalInfo {
+    const message = createBaseHistoricalInfo();
+    message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
+    message.valset = object.valset?.map(e => Validator.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseCommissionRates(): CommissionRates {
+  return {
+    rate: "",
+    maxRate: "",
+    maxChangeRate: ""
+  };
+}
+
+export const CommissionRates = {
+  encode(message: CommissionRates, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.rate !== "") {
+      writer.uint32(10).string(message.rate);
+    }
+
+    if (message.maxRate !== "") {
+      writer.uint32(18).string(message.maxRate);
+    }
+
+    if (message.maxChangeRate !== "") {
+      writer.uint32(26).string(message.maxChangeRate);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CommissionRates {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCommissionRates();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.rate = reader.string();
+          break;
+
+        case 2:
+          message.maxRate = reader.string();
+          break;
+
+        case 3:
+          message.maxChangeRate = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<CommissionRates>): CommissionRates {
+    const message = createBaseCommissionRates();
+    message.rate = object.rate ?? "";
+    message.maxRate = object.maxRate ?? "";
+    message.maxChangeRate = object.maxChangeRate ?? "";
+    return message;
+  }
+
+};
+
+function createBaseCommission(): Commission {
+  return {
+    commissionRates: undefined,
+    updateTime: undefined
+  };
+}
+
+export const Commission = {
+  encode(message: Commission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.commissionRates !== undefined) {
+      CommissionRates.encode(message.commissionRates, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.updateTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.updateTime), writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Commission {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCommission();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.commissionRates = CommissionRates.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.updateTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Commission>): Commission {
+    const message = createBaseCommission();
+    message.commissionRates = object.commissionRates !== undefined && object.commissionRates !== null ? CommissionRates.fromPartial(object.commissionRates) : undefined;
+    message.updateTime = object.updateTime ?? undefined;
+    return message;
+  }
+
+};
+
+function createBaseDescription(): Description {
+  return {
+    moniker: "",
+    identity: "",
+    website: "",
+    securityContact: "",
+    details: ""
+  };
+}
+
+export const Description = {
+  encode(message: Description, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.moniker !== "") {
+      writer.uint32(10).string(message.moniker);
+    }
+
+    if (message.identity !== "") {
+      writer.uint32(18).string(message.identity);
+    }
+
+    if (message.website !== "") {
+      writer.uint32(26).string(message.website);
+    }
+
+    if (message.securityContact !== "") {
+      writer.uint32(34).string(message.securityContact);
+    }
+
+    if (message.details !== "") {
+      writer.uint32(42).string(message.details);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Description {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDescription();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.moniker = reader.string();
+          break;
+
+        case 2:
+          message.identity = reader.string();
+          break;
+
+        case 3:
+          message.website = reader.string();
+          break;
+
+        case 4:
+          message.securityContact = reader.string();
+          break;
+
+        case 5:
+          message.details = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Description>): Description {
+    const message = createBaseDescription();
+    message.moniker = object.moniker ?? "";
+    message.identity = object.identity ?? "";
+    message.website = object.website ?? "";
+    message.securityContact = object.securityContact ?? "";
+    message.details = object.details ?? "";
+    return message;
+  }
+
+};
+
+function createBaseValidator(): Validator {
+  return {
+    operatorAddress: "",
+    consensusPubkey: undefined,
+    jailed: false,
+    status: 0,
+    tokens: "",
+    delegatorShares: "",
+    description: undefined,
+    unbondingHeight: Long.ZERO,
+    unbondingTime: undefined,
+    commission: undefined,
+    minSelfDelegation: ""
+  };
+}
+
+export const Validator = {
+  encode(message: Validator, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.operatorAddress !== "") {
+      writer.uint32(10).string(message.operatorAddress);
+    }
+
+    if (message.consensusPubkey !== undefined) {
+      Any.encode(message.consensusPubkey, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.jailed === true) {
+      writer.uint32(24).bool(message.jailed);
+    }
+
+    if (message.status !== 0) {
+      writer.uint32(32).int32(message.status);
+    }
+
+    if (message.tokens !== "") {
+      writer.uint32(42).string(message.tokens);
+    }
+
+    if (message.delegatorShares !== "") {
+      writer.uint32(50).string(message.delegatorShares);
+    }
+
+    if (message.description !== undefined) {
+      Description.encode(message.description, writer.uint32(58).fork()).ldelim();
+    }
+
+    if (!message.unbondingHeight.isZero()) {
+      writer.uint32(64).int64(message.unbondingHeight);
+    }
+
+    if (message.unbondingTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.unbondingTime), writer.uint32(74).fork()).ldelim();
+    }
+
+    if (message.commission !== undefined) {
+      Commission.encode(message.commission, writer.uint32(82).fork()).ldelim();
+    }
+
+    if (message.minSelfDelegation !== "") {
+      writer.uint32(90).string(message.minSelfDelegation);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Validator {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseValidator();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.operatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.consensusPubkey = Any.decode(reader, reader.uint32());
+          break;
+
+        case 3:
+          message.jailed = reader.bool();
+          break;
+
+        case 4:
+          message.status = (reader.int32() as any);
+          break;
+
+        case 5:
+          message.tokens = reader.string();
+          break;
+
+        case 6:
+          message.delegatorShares = reader.string();
+          break;
+
+        case 7:
+          message.description = Description.decode(reader, reader.uint32());
+          break;
+
+        case 8:
+          message.unbondingHeight = (reader.int64() as Long);
+          break;
+
+        case 9:
+          message.unbondingTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 10:
+          message.commission = Commission.decode(reader, reader.uint32());
+          break;
+
+        case 11:
+          message.minSelfDelegation = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Validator>): Validator {
+    const message = createBaseValidator();
+    message.operatorAddress = object.operatorAddress ?? "";
+    message.consensusPubkey = object.consensusPubkey !== undefined && object.consensusPubkey !== null ? Any.fromPartial(object.consensusPubkey) : undefined;
+    message.jailed = object.jailed ?? false;
+    message.status = object.status ?? 0;
+    message.tokens = object.tokens ?? "";
+    message.delegatorShares = object.delegatorShares ?? "";
+    message.description = object.description !== undefined && object.description !== null ? Description.fromPartial(object.description) : undefined;
+    message.unbondingHeight = object.unbondingHeight !== undefined && object.unbondingHeight !== null ? Long.fromValue(object.unbondingHeight) : Long.ZERO;
+    message.unbondingTime = object.unbondingTime ?? undefined;
+    message.commission = object.commission !== undefined && object.commission !== null ? Commission.fromPartial(object.commission) : undefined;
+    message.minSelfDelegation = object.minSelfDelegation ?? "";
+    return message;
+  }
+
+};
+
+function createBaseValAddresses(): ValAddresses {
+  return {
+    addresses: []
+  };
+}
+
+export const ValAddresses = {
+  encode(message: ValAddresses, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.addresses) {
+      writer.uint32(10).string(v!);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ValAddresses {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseValAddresses();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.addresses.push(reader.string());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<ValAddresses>): ValAddresses {
+    const message = createBaseValAddresses();
+    message.addresses = object.addresses?.map(e => e) || [];
+    return message;
+  }
+
+};
+
+function createBaseDVPair(): DVPair {
+  return {
+    delegatorAddress: "",
+    validatorAddress: ""
+  };
+}
+
+export const DVPair = {
+  encode(message: DVPair, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
+    }
+
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DVPair {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDVPair();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.validatorAddress = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<DVPair>): DVPair {
+    const message = createBaseDVPair();
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
+    return message;
+  }
+
+};
+
+function createBaseDVPairs(): DVPairs {
+  return {
+    pairs: []
+  };
+}
+
+export const DVPairs = {
+  encode(message: DVPairs, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.pairs) {
+      DVPair.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DVPairs {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDVPairs();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.pairs.push(DVPair.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<DVPairs>): DVPairs {
+    const message = createBaseDVPairs();
+    message.pairs = object.pairs?.map(e => DVPair.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseDVVTriplet(): DVVTriplet {
+  return {
+    delegatorAddress: "",
+    validatorSrcAddress: "",
+    validatorDstAddress: ""
+  };
+}
+
+export const DVVTriplet = {
+  encode(message: DVVTriplet, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
+    }
+
+    if (message.validatorSrcAddress !== "") {
+      writer.uint32(18).string(message.validatorSrcAddress);
+    }
+
+    if (message.validatorDstAddress !== "") {
+      writer.uint32(26).string(message.validatorDstAddress);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplet {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDVVTriplet();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.validatorSrcAddress = reader.string();
+          break;
+
+        case 3:
+          message.validatorDstAddress = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<DVVTriplet>): DVVTriplet {
+    const message = createBaseDVVTriplet();
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorSrcAddress = object.validatorSrcAddress ?? "";
+    message.validatorDstAddress = object.validatorDstAddress ?? "";
+    return message;
+  }
+
+};
+
+function createBaseDVVTriplets(): DVVTriplets {
+  return {
+    triplets: []
+  };
+}
+
+export const DVVTriplets = {
+  encode(message: DVVTriplets, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.triplets) {
+      DVVTriplet.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplets {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDVVTriplets();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.triplets.push(DVVTriplet.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<DVVTriplets>): DVVTriplets {
+    const message = createBaseDVVTriplets();
+    message.triplets = object.triplets?.map(e => DVVTriplet.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseDelegation(): Delegation {
+  return {
+    delegatorAddress: "",
+    validatorAddress: "",
+    shares: ""
+  };
+}
+
+export const Delegation = {
+  encode(message: Delegation, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
+    }
+
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
+    }
+
+    if (message.shares !== "") {
+      writer.uint32(26).string(message.shares);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Delegation {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDelegation();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.validatorAddress = reader.string();
+          break;
+
+        case 3:
+          message.shares = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Delegation>): Delegation {
+    const message = createBaseDelegation();
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.shares = object.shares ?? "";
+    return message;
+  }
+
+};
+
+function createBaseUnbondingDelegation(): UnbondingDelegation {
+  return {
+    delegatorAddress: "",
+    validatorAddress: "",
+    entries: []
+  };
+}
+
+export const UnbondingDelegation = {
+  encode(message: UnbondingDelegation, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
+    }
+
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
+    }
+
+    for (const v of message.entries) {
+      UnbondingDelegationEntry.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegation {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUnbondingDelegation();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.validatorAddress = reader.string();
+          break;
+
+        case 3:
+          message.entries.push(UnbondingDelegationEntry.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<UnbondingDelegation>): UnbondingDelegation {
+    const message = createBaseUnbondingDelegation();
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.entries = object.entries?.map(e => UnbondingDelegationEntry.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseUnbondingDelegationEntry(): UnbondingDelegationEntry {
+  return {
+    creationHeight: Long.ZERO,
+    completionTime: undefined,
+    initialBalance: "",
+    balance: ""
+  };
+}
+
+export const UnbondingDelegationEntry = {
+  encode(message: UnbondingDelegationEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.creationHeight.isZero()) {
+      writer.uint32(8).int64(message.creationHeight);
+    }
+
+    if (message.completionTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.completionTime), writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.initialBalance !== "") {
+      writer.uint32(26).string(message.initialBalance);
+    }
+
+    if (message.balance !== "") {
+      writer.uint32(34).string(message.balance);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegationEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUnbondingDelegationEntry();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.creationHeight = (reader.int64() as Long);
+          break;
+
+        case 2:
+          message.completionTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 3:
+          message.initialBalance = reader.string();
+          break;
+
+        case 4:
+          message.balance = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<UnbondingDelegationEntry>): UnbondingDelegationEntry {
+    const message = createBaseUnbondingDelegationEntry();
+    message.creationHeight = object.creationHeight !== undefined && object.creationHeight !== null ? Long.fromValue(object.creationHeight) : Long.ZERO;
+    message.completionTime = object.completionTime ?? undefined;
+    message.initialBalance = object.initialBalance ?? "";
+    message.balance = object.balance ?? "";
+    return message;
+  }
+
+};
+
+function createBaseRedelegationEntry(): RedelegationEntry {
+  return {
+    creationHeight: Long.ZERO,
+    completionTime: undefined,
+    initialBalance: "",
+    sharesDst: ""
+  };
+}
+
+export const RedelegationEntry = {
+  encode(message: RedelegationEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.creationHeight.isZero()) {
+      writer.uint32(8).int64(message.creationHeight);
+    }
+
+    if (message.completionTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.completionTime), writer.uint32(18).fork()).ldelim();
+    }
+
+    if (message.initialBalance !== "") {
+      writer.uint32(26).string(message.initialBalance);
+    }
+
+    if (message.sharesDst !== "") {
+      writer.uint32(34).string(message.sharesDst);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRedelegationEntry();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.creationHeight = (reader.int64() as Long);
+          break;
+
+        case 2:
+          message.completionTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+
+        case 3:
+          message.initialBalance = reader.string();
+          break;
+
+        case 4:
+          message.sharesDst = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<RedelegationEntry>): RedelegationEntry {
+    const message = createBaseRedelegationEntry();
+    message.creationHeight = object.creationHeight !== undefined && object.creationHeight !== null ? Long.fromValue(object.creationHeight) : Long.ZERO;
+    message.completionTime = object.completionTime ?? undefined;
+    message.initialBalance = object.initialBalance ?? "";
+    message.sharesDst = object.sharesDst ?? "";
+    return message;
+  }
+
+};
+
+function createBaseRedelegation(): Redelegation {
+  return {
+    delegatorAddress: "",
+    validatorSrcAddress: "",
+    validatorDstAddress: "",
+    entries: []
+  };
+}
+
+export const Redelegation = {
+  encode(message: Redelegation, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
+    }
+
+    if (message.validatorSrcAddress !== "") {
+      writer.uint32(18).string(message.validatorSrcAddress);
+    }
+
+    if (message.validatorDstAddress !== "") {
+      writer.uint32(26).string(message.validatorDstAddress);
+    }
+
+    for (const v of message.entries) {
+      RedelegationEntry.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Redelegation {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRedelegation();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegatorAddress = reader.string();
+          break;
+
+        case 2:
+          message.validatorSrcAddress = reader.string();
+          break;
+
+        case 3:
+          message.validatorDstAddress = reader.string();
+          break;
+
+        case 4:
+          message.entries.push(RedelegationEntry.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Redelegation>): Redelegation {
+    const message = createBaseRedelegation();
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorSrcAddress = object.validatorSrcAddress ?? "";
+    message.validatorDstAddress = object.validatorDstAddress ?? "";
+    message.entries = object.entries?.map(e => RedelegationEntry.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseParams(): Params {
+  return {
+    unbondingTime: undefined,
+    maxValidators: 0,
+    maxEntries: 0,
+    historicalEntries: 0,
+    bondDenom: "",
+    minCommissionRate: ""
+  };
+}
+
+export const Params = {
+  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.unbondingTime !== undefined) {
+      Duration.encode(message.unbondingTime, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.maxValidators !== 0) {
+      writer.uint32(16).uint32(message.maxValidators);
+    }
+
+    if (message.maxEntries !== 0) {
+      writer.uint32(24).uint32(message.maxEntries);
+    }
+
+    if (message.historicalEntries !== 0) {
+      writer.uint32(32).uint32(message.historicalEntries);
+    }
+
+    if (message.bondDenom !== "") {
+      writer.uint32(42).string(message.bondDenom);
+    }
+
+    if (message.minCommissionRate !== "") {
+      writer.uint32(50).string(message.minCommissionRate);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Params {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseParams();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.unbondingTime = Duration.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.maxValidators = reader.uint32();
+          break;
+
+        case 3:
+          message.maxEntries = reader.uint32();
+          break;
+
+        case 4:
+          message.historicalEntries = reader.uint32();
+          break;
+
+        case 5:
+          message.bondDenom = reader.string();
+          break;
+
+        case 6:
+          message.minCommissionRate = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Params>): Params {
+    const message = createBaseParams();
+    message.unbondingTime = object.unbondingTime !== undefined && object.unbondingTime !== null ? Duration.fromPartial(object.unbondingTime) : undefined;
+    message.maxValidators = object.maxValidators ?? 0;
+    message.maxEntries = object.maxEntries ?? 0;
+    message.historicalEntries = object.historicalEntries ?? 0;
+    message.bondDenom = object.bondDenom ?? "";
+    message.minCommissionRate = object.minCommissionRate ?? "";
+    return message;
+  }
+
+};
+
+function createBaseDelegationResponse(): DelegationResponse {
+  return {
+    delegation: undefined,
+    balance: undefined
+  };
+}
+
+export const DelegationResponse = {
+  encode(message: DelegationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.delegation !== undefined) {
+      Delegation.encode(message.delegation, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.balance !== undefined) {
+      Coin.encode(message.balance, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DelegationResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDelegationResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.delegation = Delegation.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.balance = Coin.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<DelegationResponse>): DelegationResponse {
+    const message = createBaseDelegationResponse();
+    message.delegation = object.delegation !== undefined && object.delegation !== null ? Delegation.fromPartial(object.delegation) : undefined;
+    message.balance = object.balance !== undefined && object.balance !== null ? Coin.fromPartial(object.balance) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseRedelegationEntryResponse(): RedelegationEntryResponse {
+  return {
+    redelegationEntry: undefined,
+    balance: ""
+  };
+}
+
+export const RedelegationEntryResponse = {
+  encode(message: RedelegationEntryResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.redelegationEntry !== undefined) {
+      RedelegationEntry.encode(message.redelegationEntry, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.balance !== "") {
+      writer.uint32(34).string(message.balance);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntryResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRedelegationEntryResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.redelegationEntry = RedelegationEntry.decode(reader, reader.uint32());
+          break;
+
+        case 4:
+          message.balance = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<RedelegationEntryResponse>): RedelegationEntryResponse {
+    const message = createBaseRedelegationEntryResponse();
+    message.redelegationEntry = object.redelegationEntry !== undefined && object.redelegationEntry !== null ? RedelegationEntry.fromPartial(object.redelegationEntry) : undefined;
+    message.balance = object.balance ?? "";
+    return message;
+  }
+
+};
+
+function createBaseRedelegationResponse(): RedelegationResponse {
+  return {
+    redelegation: undefined,
+    entries: []
+  };
+}
+
+export const RedelegationResponse = {
+  encode(message: RedelegationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.redelegation !== undefined) {
+      Redelegation.encode(message.redelegation, writer.uint32(10).fork()).ldelim();
+    }
+
+    for (const v of message.entries) {
+      RedelegationEntryResponse.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRedelegationResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.redelegation = Redelegation.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.entries.push(RedelegationEntryResponse.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<RedelegationResponse>): RedelegationResponse {
+    const message = createBaseRedelegationResponse();
+    message.redelegation = object.redelegation !== undefined && object.redelegation !== null ? Redelegation.fromPartial(object.redelegation) : undefined;
+    message.entries = object.entries?.map(e => RedelegationEntryResponse.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBasePool(): Pool {
+  return {
+    notBondedTokens: "",
+    bondedTokens: ""
+  };
+}
+
+export const Pool = {
+  encode(message: Pool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.notBondedTokens !== "") {
+      writer.uint32(10).string(message.notBondedTokens);
+    }
+
+    if (message.bondedTokens !== "") {
+      writer.uint32(18).string(message.bondedTokens);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Pool {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePool();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.notBondedTokens = reader.string();
+          break;
+
+        case 2:
+          message.bondedTokens = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Pool>): Pool {
+    const message = createBasePool();
+    message.notBondedTokens = object.notBondedTokens ?? "";
+    message.bondedTokens = object.bondedTokens ?? "";
+    return message;
+  }
+
+};

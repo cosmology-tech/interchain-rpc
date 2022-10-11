@@ -1,5 +1,7 @@
 import { CompactBitArray, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../../../helpers";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  * 
@@ -250,3 +252,278 @@ export interface SignatureDescriptor_Data_MultiSDKType {
 
   signatures: SignatureDescriptor_DataSDKType[];
 }
+
+function createBaseSignatureDescriptors(): SignatureDescriptors {
+  return {
+    signatures: []
+  };
+}
+
+export const SignatureDescriptors = {
+  encode(message: SignatureDescriptors, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.signatures) {
+      SignatureDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSignatureDescriptors();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.signatures.push(SignatureDescriptor.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors {
+    const message = createBaseSignatureDescriptors();
+    message.signatures = object.signatures?.map(e => SignatureDescriptor.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseSignatureDescriptor(): SignatureDescriptor {
+  return {
+    publicKey: undefined,
+    data: undefined,
+    sequence: Long.UZERO
+  };
+}
+
+export const SignatureDescriptor = {
+  encode(message: SignatureDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.publicKey !== undefined) {
+      Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.data !== undefined) {
+      SignatureDescriptor_Data.encode(message.data, writer.uint32(18).fork()).ldelim();
+    }
+
+    if (!message.sequence.isZero()) {
+      writer.uint32(24).uint64(message.sequence);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSignatureDescriptor();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.publicKey = Any.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.data = SignatureDescriptor_Data.decode(reader, reader.uint32());
+          break;
+
+        case 3:
+          message.sequence = (reader.uint64() as Long);
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor {
+    const message = createBaseSignatureDescriptor();
+    message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
+    message.data = object.data !== undefined && object.data !== null ? SignatureDescriptor_Data.fromPartial(object.data) : undefined;
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
+    return message;
+  }
+
+};
+
+function createBaseSignatureDescriptor_Data(): SignatureDescriptor_Data {
+  return {
+    single: undefined,
+    multi: undefined
+  };
+}
+
+export const SignatureDescriptor_Data = {
+  encode(message: SignatureDescriptor_Data, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.single !== undefined) {
+      SignatureDescriptor_Data_Single.encode(message.single, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.multi !== undefined) {
+      SignatureDescriptor_Data_Multi.encode(message.multi, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSignatureDescriptor_Data();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.single = SignatureDescriptor_Data_Single.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.multi = SignatureDescriptor_Data_Multi.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data {
+    const message = createBaseSignatureDescriptor_Data();
+    message.single = object.single !== undefined && object.single !== null ? SignatureDescriptor_Data_Single.fromPartial(object.single) : undefined;
+    message.multi = object.multi !== undefined && object.multi !== null ? SignatureDescriptor_Data_Multi.fromPartial(object.multi) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseSignatureDescriptor_Data_Single(): SignatureDescriptor_Data_Single {
+  return {
+    mode: 0,
+    signature: new Uint8Array()
+  };
+}
+
+export const SignatureDescriptor_Data_Single = {
+  encode(message: SignatureDescriptor_Data_Single, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.mode !== 0) {
+      writer.uint32(8).int32(message.mode);
+    }
+
+    if (message.signature.length !== 0) {
+      writer.uint32(18).bytes(message.signature);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSignatureDescriptor_Data_Single();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.mode = (reader.int32() as any);
+          break;
+
+        case 2:
+          message.signature = reader.bytes();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single {
+    const message = createBaseSignatureDescriptor_Data_Single();
+    message.mode = object.mode ?? 0;
+    message.signature = object.signature ?? new Uint8Array();
+    return message;
+  }
+
+};
+
+function createBaseSignatureDescriptor_Data_Multi(): SignatureDescriptor_Data_Multi {
+  return {
+    bitarray: undefined,
+    signatures: []
+  };
+}
+
+export const SignatureDescriptor_Data_Multi = {
+  encode(message: SignatureDescriptor_Data_Multi, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.bitarray !== undefined) {
+      CompactBitArray.encode(message.bitarray, writer.uint32(10).fork()).ldelim();
+    }
+
+    for (const v of message.signatures) {
+      SignatureDescriptor_Data.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSignatureDescriptor_Data_Multi();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.bitarray = CompactBitArray.decode(reader, reader.uint32());
+          break;
+
+        case 2:
+          message.signatures.push(SignatureDescriptor_Data.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi {
+    const message = createBaseSignatureDescriptor_Data_Multi();
+    message.bitarray = object.bitarray !== undefined && object.bitarray !== null ? CompactBitArray.fromPartial(object.bitarray) : undefined;
+    message.signatures = object.signatures?.map(e => SignatureDescriptor_Data.fromPartial(e)) || [];
+    return message;
+  }
+
+};

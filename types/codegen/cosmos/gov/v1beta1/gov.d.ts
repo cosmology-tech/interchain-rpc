@@ -1,7 +1,8 @@
-/// <reference types="long" />
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../../helpers";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
@@ -290,3 +291,48 @@ export interface TallyParamsSDKType {
      */
     veto_threshold: Uint8Array;
 }
+export declare const WeightedVoteOption: {
+    encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): WeightedVoteOption;
+    fromPartial(object: DeepPartial<WeightedVoteOption>): WeightedVoteOption;
+};
+export declare const TextProposal: {
+    encode(message: TextProposal, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TextProposal;
+    fromPartial(object: DeepPartial<TextProposal>): TextProposal;
+};
+export declare const Deposit: {
+    encode(message: Deposit, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Deposit;
+    fromPartial(object: DeepPartial<Deposit>): Deposit;
+};
+export declare const Proposal: {
+    encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
+    fromPartial(object: DeepPartial<Proposal>): Proposal;
+};
+export declare const TallyResult: {
+    encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
+    fromPartial(object: DeepPartial<TallyResult>): TallyResult;
+};
+export declare const Vote: {
+    encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
+    fromPartial(object: DeepPartial<Vote>): Vote;
+};
+export declare const DepositParams: {
+    encode(message: DepositParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): DepositParams;
+    fromPartial(object: DeepPartial<DepositParams>): DepositParams;
+};
+export declare const VotingParams: {
+    encode(message: VotingParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): VotingParams;
+    fromPartial(object: DeepPartial<VotingParams>): VotingParams;
+};
+export declare const TallyParams: {
+    encode(message: TallyParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TallyParams;
+    fromPartial(object: DeepPartial<TallyParams>): TallyParams;
+};

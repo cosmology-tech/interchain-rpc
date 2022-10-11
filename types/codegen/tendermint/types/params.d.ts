@@ -1,5 +1,6 @@
-/// <reference types="long" />
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../helpers";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -148,3 +149,33 @@ export interface HashedParamsSDKType {
     block_max_bytes: Long;
     block_max_gas: Long;
 }
+export declare const ConsensusParams: {
+    encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
+    fromPartial(object: DeepPartial<ConsensusParams>): ConsensusParams;
+};
+export declare const BlockParams: {
+    encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
+    fromPartial(object: DeepPartial<BlockParams>): BlockParams;
+};
+export declare const EvidenceParams: {
+    encode(message: EvidenceParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceParams;
+    fromPartial(object: DeepPartial<EvidenceParams>): EvidenceParams;
+};
+export declare const ValidatorParams: {
+    encode(message: ValidatorParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorParams;
+    fromPartial(object: DeepPartial<ValidatorParams>): ValidatorParams;
+};
+export declare const VersionParams: {
+    encode(message: VersionParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): VersionParams;
+    fromPartial(object: DeepPartial<VersionParams>): VersionParams;
+};
+export declare const HashedParams: {
+    encode(message: HashedParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): HashedParams;
+    fromPartial(object: DeepPartial<HashedParams>): HashedParams;
+};

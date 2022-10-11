@@ -1,3 +1,5 @@
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -79,6 +81,7 @@
  *       "value": "1.212s"
  *     }
  */
+
 export interface Any {
   /**
    * A URL/resource name that uniquely identifies the type of the serialized
@@ -231,3 +234,58 @@ export interface AnySDKType {
 
   value: Uint8Array;
 }
+
+function createBaseAny(): Any {
+  return {
+    typeUrl: "",
+    value: new Uint8Array()
+  };
+}
+
+export const Any = {
+  encode(message: Any, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.typeUrl !== "") {
+      writer.uint32(10).string(message.typeUrl);
+    }
+
+    if (message.value.length !== 0) {
+      writer.uint32(18).bytes(message.value);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Any {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAny();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.typeUrl = reader.string();
+          break;
+
+        case 2:
+          message.value = reader.bytes();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<Any>): Any {
+    const message = createBaseAny();
+    message.typeUrl = object.typeUrl ?? "";
+    message.value = object.value ?? new Uint8Array();
+    return message;
+  }
+
+};

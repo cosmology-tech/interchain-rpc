@@ -1,7 +1,8 @@
-/// <reference types="long" />
 import { Proof, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusSDKType } from "../version/types";
 import { ValidatorSet, ValidatorSetSDKType } from "./validator";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial, Long } from "../../helpers";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 export declare enum BlockIDFlag {
     BLOCK_ID_FLAG_UNKNOWN = 0,
@@ -258,3 +259,68 @@ export interface TxProofSDKType {
     data: Uint8Array;
     proof: ProofSDKType;
 }
+export declare const PartSetHeader: {
+    encode(message: PartSetHeader, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader;
+    fromPartial(object: DeepPartial<PartSetHeader>): PartSetHeader;
+};
+export declare const Part: {
+    encode(message: Part, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Part;
+    fromPartial(object: DeepPartial<Part>): Part;
+};
+export declare const BlockID: {
+    encode(message: BlockID, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BlockID;
+    fromPartial(object: DeepPartial<BlockID>): BlockID;
+};
+export declare const Header: {
+    encode(message: Header, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Header;
+    fromPartial(object: DeepPartial<Header>): Header;
+};
+export declare const Data: {
+    encode(message: Data, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Data;
+    fromPartial(object: DeepPartial<Data>): Data;
+};
+export declare const Vote: {
+    encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
+    fromPartial(object: DeepPartial<Vote>): Vote;
+};
+export declare const Commit: {
+    encode(message: Commit, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Commit;
+    fromPartial(object: DeepPartial<Commit>): Commit;
+};
+export declare const CommitSig: {
+    encode(message: CommitSig, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig;
+    fromPartial(object: DeepPartial<CommitSig>): CommitSig;
+};
+export declare const Proposal: {
+    encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
+    fromPartial(object: DeepPartial<Proposal>): Proposal;
+};
+export declare const SignedHeader: {
+    encode(message: SignedHeader, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader;
+    fromPartial(object: DeepPartial<SignedHeader>): SignedHeader;
+};
+export declare const LightBlock: {
+    encode(message: LightBlock, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock;
+    fromPartial(object: DeepPartial<LightBlock>): LightBlock;
+};
+export declare const BlockMeta: {
+    encode(message: BlockMeta, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta;
+    fromPartial(object: DeepPartial<BlockMeta>): BlockMeta;
+};
+export declare const TxProof: {
+    encode(message: TxProof, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): TxProof;
+    fromPartial(object: DeepPartial<TxProof>): TxProof;
+};

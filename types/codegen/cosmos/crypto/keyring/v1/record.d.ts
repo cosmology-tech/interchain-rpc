@@ -1,5 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { BIP44Params, BIP44ParamsSDKType } from "../../hd/v1/hd";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../../helpers";
 /** Record is used for representing a key in the keyring. */
 export interface Record {
     /** name represents a name of Record */
@@ -66,3 +68,28 @@ export interface Record_Offline {
 /** Offline item */
 export interface Record_OfflineSDKType {
 }
+export declare const Record: {
+    encode(message: Record, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Record;
+    fromPartial(object: DeepPartial<Record>): Record;
+};
+export declare const Record_Local: {
+    encode(message: Record_Local, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Record_Local;
+    fromPartial(object: DeepPartial<Record_Local>): Record_Local;
+};
+export declare const Record_Ledger: {
+    encode(message: Record_Ledger, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Record_Ledger;
+    fromPartial(object: DeepPartial<Record_Ledger>): Record_Ledger;
+};
+export declare const Record_Multi: {
+    encode(_: Record_Multi, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Record_Multi;
+    fromPartial(_: DeepPartial<Record_Multi>): Record_Multi;
+};
+export declare const Record_Offline: {
+    encode(_: Record_Offline, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Record_Offline;
+    fromPartial(_: DeepPartial<Record_Offline>): Record_Offline;
+};

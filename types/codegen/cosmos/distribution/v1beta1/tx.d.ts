@@ -1,4 +1,6 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).
@@ -89,3 +91,43 @@ export interface MsgFundCommunityPoolResponse {
 /** MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type. */
 export interface MsgFundCommunityPoolResponseSDKType {
 }
+export declare const MsgSetWithdrawAddress: {
+    encode(message: MsgSetWithdrawAddress, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddress;
+    fromPartial(object: DeepPartial<MsgSetWithdrawAddress>): MsgSetWithdrawAddress;
+};
+export declare const MsgSetWithdrawAddressResponse: {
+    encode(_: MsgSetWithdrawAddressResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse;
+    fromPartial(_: DeepPartial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse;
+};
+export declare const MsgWithdrawDelegatorReward: {
+    encode(message: MsgWithdrawDelegatorReward, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorReward;
+    fromPartial(object: DeepPartial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward;
+};
+export declare const MsgWithdrawDelegatorRewardResponse: {
+    encode(message: MsgWithdrawDelegatorRewardResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse;
+    fromPartial(object: DeepPartial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse;
+};
+export declare const MsgWithdrawValidatorCommission: {
+    encode(message: MsgWithdrawValidatorCommission, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommission;
+    fromPartial(object: DeepPartial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission;
+};
+export declare const MsgWithdrawValidatorCommissionResponse: {
+    encode(message: MsgWithdrawValidatorCommissionResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse;
+    fromPartial(object: DeepPartial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse;
+};
+export declare const MsgFundCommunityPool: {
+    encode(message: MsgFundCommunityPool, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPool;
+    fromPartial(object: DeepPartial<MsgFundCommunityPool>): MsgFundCommunityPool;
+};
+export declare const MsgFundCommunityPoolResponse: {
+    encode(_: MsgFundCommunityPoolResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPoolResponse;
+    fromPartial(_: DeepPartial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse;
+};

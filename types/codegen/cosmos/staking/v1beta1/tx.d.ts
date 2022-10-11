@@ -1,6 +1,8 @@
 import { Description, DescriptionSDKType, CommissionRates, CommissionRatesSDKType } from "./staking";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
     description: Description;
@@ -137,3 +139,53 @@ export interface MsgUndelegateResponse {
 export interface MsgUndelegateResponseSDKType {
     completion_time: Date;
 }
+export declare const MsgCreateValidator: {
+    encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidator;
+    fromPartial(object: DeepPartial<MsgCreateValidator>): MsgCreateValidator;
+};
+export declare const MsgCreateValidatorResponse: {
+    encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponse;
+    fromPartial(_: DeepPartial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
+};
+export declare const MsgEditValidator: {
+    encode(message: MsgEditValidator, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidator;
+    fromPartial(object: DeepPartial<MsgEditValidator>): MsgEditValidator;
+};
+export declare const MsgEditValidatorResponse: {
+    encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponse;
+    fromPartial(_: DeepPartial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
+};
+export declare const MsgDelegate: {
+    encode(message: MsgDelegate, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegate;
+    fromPartial(object: DeepPartial<MsgDelegate>): MsgDelegate;
+};
+export declare const MsgDelegateResponse: {
+    encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponse;
+    fromPartial(_: DeepPartial<MsgDelegateResponse>): MsgDelegateResponse;
+};
+export declare const MsgBeginRedelegate: {
+    encode(message: MsgBeginRedelegate, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegate;
+    fromPartial(object: DeepPartial<MsgBeginRedelegate>): MsgBeginRedelegate;
+};
+export declare const MsgBeginRedelegateResponse: {
+    encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
+    fromPartial(object: DeepPartial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
+};
+export declare const MsgUndelegate: {
+    encode(message: MsgUndelegate, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegate;
+    fromPartial(object: DeepPartial<MsgUndelegate>): MsgUndelegate;
+};
+export declare const MsgUndelegateResponse: {
+    encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponse;
+    fromPartial(object: DeepPartial<MsgUndelegateResponse>): MsgUndelegateResponse;
+};
