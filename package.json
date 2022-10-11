@@ -1,6 +1,6 @@
 {
   "name": "interchain-rpc",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "interchain-rpc",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/cosmology-tech/interchain-rpc#readme",
@@ -14,6 +14,8 @@
   },
   "files": [
     "types",
+    "module",
+    "src",
     "main"
   ],
   "scripts": {
